@@ -290,7 +290,7 @@
 						}
 ,
 						"classnamespace" : "dsp.gen",
-						"rect" : [ 34.0, 78.0, 1468.0, 712.0 ],
+						"rect" : [ 41.0, 85.0, 1468.0, 712.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -327,7 +327,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 838.0, 75.0, 425.0, 602.0 ],
+									"patching_rect" : [ 902.0, 60.0, 425.0, 602.0 ],
 									"presentation_linecount" : 34,
 									"text" : "In 1:\nInput the audio from Max MSP and the @comment will show when you hoover over that inlet.\n\nParam Object:\nParam allows for external control without using the \"in\" object, and also provides the option of 4 attributes @name, @default, @min, and @max. In this implementation it is being used as input for a multi-tap delay in seconds.\n\nmstosamps:\nConvert the param seconds input to samples as gen is sample based (Bare this in mind when working with time based processing).\n\ndelay:\nTwo arguments after the name are the delay size in samples and how many taps the delay can have (This goes up to 15 for one object). The other aspects are the @name that names the object and @feedback that tells it if it can except feedback (it's a bool so 0=false, 1 = true).\n\n+:\nAll taps for the delay are then summed using a + operator.\n\n*:\nThe multipication by 0.25 is the same as divding by the number of delays to avoid clipping.\n\nMix:\nDoes what it says on the tin. Mixes between inputs one and two using a value between 0-1 from input three (Extremely useful to create a Wet/Dry Mix Control)\n\nOut 1:\nMono output for the patch\n",
 									"textjustification" : 0
@@ -342,7 +342,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 98.25, 655.0, 291.0, 23.0 ],
+									"patching_rect" : [ 162.25, 640.0, 291.0, 23.0 ],
 									"text" : "Output to Max Patch"
 								}
 
@@ -355,7 +355,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 39.0, 32.0, 493.0, 34.0 ],
+									"patching_rect" : [ 103.0, 17.0, 493.0, 34.0 ],
 									"presentation_linecount" : 2,
 									"text" : "Multi-Tapped Delay Implementation",
 									"textjustification" : 1
@@ -370,7 +370,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 552.0, 586.0, 262.0, 23.0 ],
+									"patching_rect" : [ 616.0, 571.0, 262.0, 23.0 ],
 									"text" : "Mix Control between wet and dry"
 								}
 
@@ -382,7 +382,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 82.0, 591.0, 281.0, 22.0 ],
+									"patching_rect" : [ 146.0, 576.0, 281.0, 22.0 ],
 									"text" : "param @name Mix @default 0.5 @min 0. @max 1."
 								}
 
@@ -394,7 +394,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 39.0, 623.0, 62.0, 22.0 ],
+									"patching_rect" : [ 103.0, 608.0, 62.0, 22.0 ],
 									"text" : "mix"
 								}
 
@@ -407,7 +407,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 128.5, 546.0, 296.0, 23.0 ],
+									"patching_rect" : [ 192.5, 531.0, 296.0, 23.0 ],
 									"presentation_linecount" : 2,
 									"text" : "Scaling the Output down to avoid clipping"
 								}
@@ -421,7 +421,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 128.5, 511.0, 289.0, 23.0 ],
+									"patching_rect" : [ 192.5, 496.0, 289.0, 23.0 ],
 									"text" : "Summing the Delays"
 								}
 
@@ -435,7 +435,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 552.0, 406.0, 262.0, 39.0 ],
+									"patching_rect" : [ 616.0, 391.0, 262.0, 39.0 ],
 									"presentation_linecount" : 2,
 									"text" : "Delays the input signal and has 4 delays"
 								}
@@ -449,7 +449,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 552.0, 350.0, 262.0, 23.0 ],
+									"patching_rect" : [ 616.0, 335.0, 262.0, 23.0 ],
 									"presentation_linecount" : 2,
 									"text" : "Converts milliseconds to samples "
 								}
@@ -463,7 +463,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 159.0, 176.0, 294.0, 23.0 ],
+									"patching_rect" : [ 223.0, 161.0, 294.0, 23.0 ],
 									"presentation_linecount" : 2,
 									"text" : "Multitap Delay with four parameters"
 								}
@@ -477,7 +477,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 39.0, 109.0, 291.0, 23.0 ],
+									"patching_rect" : [ 103.0, 94.0, 291.0, 23.0 ],
 									"text" : "Input Audio From Max Patch"
 								}
 
@@ -488,7 +488,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 39.0, 655.0, 35.0, 22.0 ],
+									"patching_rect" : [ 103.0, 640.0, 35.0, 22.0 ],
 									"text" : "out 1"
 								}
 
@@ -500,7 +500,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 61.0, 546.0, 40.0, 22.0 ],
+									"patching_rect" : [ 125.0, 531.0, 40.0, 22.0 ],
 									"text" : "* 0.25"
 								}
 
@@ -512,7 +512,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 61.0, 511.0, 29.5, 22.0 ],
+									"patching_rect" : [ 125.0, 496.0, 29.5, 22.0 ],
 									"text" : "+"
 								}
 
@@ -524,7 +524,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 322.333333333333258, 467.0, 29.5, 22.0 ],
+									"patching_rect" : [ 386.333333333333258, 452.0, 29.5, 22.0 ],
 									"text" : "+"
 								}
 
@@ -536,7 +536,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 61.0, 466.0, 29.5, 22.0 ],
+									"patching_rect" : [ 125.0, 451.0, 29.5, 22.0 ],
 									"text" : "+"
 								}
 
@@ -548,7 +548,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 453.0, 350.0, 70.0, 22.0 ],
+									"patching_rect" : [ 517.0, 335.0, 70.0, 22.0 ],
 									"text" : "mstosamps"
 								}
 
@@ -560,7 +560,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 453.0, 309.0, 361.0, 22.0 ],
+									"patching_rect" : [ 517.0, 294.0, 361.0, 22.0 ],
 									"text" : "param @name DelayTimeFour @default 400 @min 0 @max 2000"
 								}
 
@@ -572,7 +572,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 355.0, 350.0, 70.0, 22.0 ],
+									"patching_rect" : [ 419.0, 335.0, 70.0, 22.0 ],
 									"text" : "mstosamps"
 								}
 
@@ -584,7 +584,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 355.0, 277.0, 368.0, 22.0 ],
+									"patching_rect" : [ 419.0, 262.0, 368.0, 22.0 ],
 									"text" : "param @name DelayTimeThree @default 300 @min 0 @max 2000"
 								}
 
@@ -596,7 +596,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 257.0, 350.0, 70.0, 22.0 ],
+									"patching_rect" : [ 321.0, 335.0, 70.0, 22.0 ],
 									"text" : "mstosamps"
 								}
 
@@ -608,7 +608,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 257.0, 242.0, 358.0, 22.0 ],
+									"patching_rect" : [ 321.0, 227.0, 358.0, 22.0 ],
 									"text" : "param @name DelayTimeTwo @default 200 @min 0 @max 2000"
 								}
 
@@ -620,7 +620,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 159.0, 350.0, 70.0, 22.0 ],
+									"patching_rect" : [ 223.0, 335.0, 70.0, 22.0 ],
 									"text" : "mstosamps"
 								}
 
@@ -632,7 +632,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 159.0, 207.0, 359.0, 22.0 ],
+									"patching_rect" : [ 223.0, 192.0, 359.0, 22.0 ],
 									"text" : "param @name DelayTimeOne @default 100 @min 0 @max 2000"
 								}
 
@@ -644,7 +644,7 @@
 									"numinlets" : 5,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "" ],
-									"patching_rect" : [ 61.0, 406.0, 411.0, 22.0 ],
+									"patching_rect" : [ 125.0, 391.0, 411.0, 22.0 ],
 									"text" : "delay 96000 4 @name DelayLine @feedback 1"
 								}
 
@@ -656,7 +656,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 39.0, 137.0, 156.0, 22.0 ],
+									"patching_rect" : [ 103.0, 122.0, 156.0, 22.0 ],
 									"text" : "in 1 @comment InputSignal"
 								}
 
@@ -672,7 +672,7 @@
 									"mode" : 1,
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 16.5, 1314.0, 684.0 ],
+									"patching_rect" : [ 70.0, 1.5, 1314.0, 684.0 ],
 									"proportion" : 0.5
 								}
 
@@ -689,7 +689,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
-									"midpoints" : [ 48.5, 392.0, 70.5, 392.0 ],
+									"midpoints" : [ 112.5, 377.0, 134.5, 377.0 ],
 									"order" : 0,
 									"source" : [ "obj-1", 0 ]
 								}
@@ -754,7 +754,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-19", 1 ],
-									"midpoints" : [ 331.833333333333258, 490.0, 101.0, 490.0, 101.0, 505.0, 81.0, 505.0 ],
+									"midpoints" : [ 395.833333333333258, 475.0, 165.0, 475.0, 165.0, 490.0, 145.0, 490.0 ],
 									"source" : [ "obj-18", 0 ]
 								}
 
@@ -769,7 +769,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-31", 1 ],
-									"midpoints" : [ 70.5, 571.0, 70.0, 571.0 ],
+									"midpoints" : [ 134.5, 556.0, 134.0, 556.0 ],
 									"source" : [ "obj-20", 0 ]
 								}
 
@@ -791,7 +791,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-17", 1 ],
-									"midpoints" : [ 201.166666666666657, 454.0, 81.0, 454.0 ],
+									"midpoints" : [ 265.166666666666629, 439.0, 145.0, 439.0 ],
 									"source" : [ "obj-5", 1 ]
 								}
 
@@ -806,7 +806,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-18", 1 ],
-									"midpoints" : [ 462.5, 454.0, 342.333333333333258, 454.0 ],
+									"midpoints" : [ 526.5, 439.0, 406.333333333333258, 439.0 ],
 									"source" : [ "obj-5", 3 ]
 								}
 
