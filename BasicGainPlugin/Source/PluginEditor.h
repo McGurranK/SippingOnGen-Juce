@@ -14,11 +14,11 @@
 //==============================================================================
 /**
 */
-class _1_GenToJuceAudioProcessorEditor  : public juce::AudioProcessorEditor
+class BasicGainPluginAudioProcessorEditor  : public juce::AudioProcessorEditor
 {
 public:
-    _1_GenToJuceAudioProcessorEditor (_1_GenToJuceAudioProcessor&);
-    ~_1_GenToJuceAudioProcessorEditor() override;
+    BasicGainPluginAudioProcessorEditor (BasicGainPluginAudioProcessor&);
+    ~BasicGainPluginAudioProcessorEditor() override;
 
     //==============================================================================
     void paint (juce::Graphics&) override;
@@ -27,7 +27,7 @@ public:
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
-    _1_GenToJuceAudioProcessor& audioProcessor;
+    BasicGainPluginAudioProcessor& audioProcessor;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (_1_GenToJuceAudioProcessorEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicGainPluginAudioProcessorEditor)
 };

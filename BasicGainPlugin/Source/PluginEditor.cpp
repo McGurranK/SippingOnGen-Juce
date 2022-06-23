@@ -10,7 +10,7 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-_1_GenToJuceAudioProcessorEditor::_1_GenToJuceAudioProcessorEditor (_1_GenToJuceAudioProcessor& p)
+BasicGainPluginAudioProcessorEditor::BasicGainPluginAudioProcessorEditor (BasicGainPluginAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
     // Make sure that before the constructor has finished, you've set the
@@ -18,12 +18,12 @@ _1_GenToJuceAudioProcessorEditor::_1_GenToJuceAudioProcessorEditor (_1_GenToJuce
     setSize (400, 300);
 }
 
-_1_GenToJuceAudioProcessorEditor::~_1_GenToJuceAudioProcessorEditor()
+BasicGainPluginAudioProcessorEditor::~BasicGainPluginAudioProcessorEditor()
 {
 }
 
 //==============================================================================
-void _1_GenToJuceAudioProcessorEditor::paint (juce::Graphics& g)
+void BasicGainPluginAudioProcessorEditor::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
@@ -33,7 +33,7 @@ void _1_GenToJuceAudioProcessorEditor::paint (juce::Graphics& g)
     g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
 }
 
-void _1_GenToJuceAudioProcessorEditor::resized()
+void BasicGainPluginAudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..

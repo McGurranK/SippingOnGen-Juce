@@ -2,11 +2,11 @@
 
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="1.GenToJuce\Source">
-      <UniqueIdentifier>{34EB771C-74EA-BC0C-CBE3-5DF5E5139D19}</UniqueIdentifier>
+    <Filter Include="BasicGainPlugin\Source">
+      <UniqueIdentifier>{3F453A0C-B032-3571-98C2-34E27E1ED8BC}</UniqueIdentifier>
     </Filter>
-    <Filter Include="1.GenToJuce">
-      <UniqueIdentifier>{D441AEFA-3AE2-0C19-A208-1147E5AFAF6E}</UniqueIdentifier>
+    <Filter Include="BasicGainPlugin">
+      <UniqueIdentifier>{ADD9F0F4-9A08-AB83-9624-9DB51CE12E97}</UniqueIdentifier>
     </Filter>
     <Filter Include="JUCE Modules\juce_audio_basics\audio_play_head">
       <UniqueIdentifier>{EB58F05A-A968-CEBE-40C4-107CDD8F240F}</UniqueIdentifier>
@@ -446,10 +446,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
-      <Filter>1.GenToJuce\Source</Filter>
+      <Filter>BasicGainPlugin\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\PluginEditor.cpp">
-      <Filter>1.GenToJuce\Source</Filter>
+      <Filter>BasicGainPlugin\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <Filter>JUCE Modules\juce_audio_basics\buffers</Filter>
@@ -2563,10 +2563,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
-      <Filter>1.GenToJuce\Source</Filter>
+      <Filter>BasicGainPlugin\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PluginEditor.h">
-      <Filter>1.GenToJuce\Source</Filter>
+      <Filter>BasicGainPlugin\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">
       <Filter>JUCE Modules\juce_audio_basics\audio_play_head</Filter>

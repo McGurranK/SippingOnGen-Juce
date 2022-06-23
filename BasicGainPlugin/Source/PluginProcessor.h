@@ -13,12 +13,12 @@
 //==============================================================================
 /**
 */
-class _1_GenToJuceAudioProcessor  : public juce::AudioProcessor
+class BasicGainPluginAudioProcessor  : public juce::AudioProcessor
 {
 public:
     //==============================================================================
-    _1_GenToJuceAudioProcessor();
-    ~_1_GenToJuceAudioProcessor() override;
+    BasicGainPluginAudioProcessor();
+    ~BasicGainPluginAudioProcessor() override;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -55,5 +55,5 @@ public:
 
 private:
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (_1_GenToJuceAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicGainPluginAudioProcessor)
 };

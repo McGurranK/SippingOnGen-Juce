@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 78.0, 1468.0, 712.0 ],
+		"rect" : [ 161.0, 147.0, 1468.0, 756.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,98 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-18",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 408.5, 102.0, 150.0, 20.0 ],
+					"text" : "Gen Parameters"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-17",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 21.0, 110.0, 76.0, 22.0 ],
+					"text" : "exportcode"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-14",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 745.0, 202.0, 150.0, 20.0 ],
+					"text" : "Ensure this is off"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"attr" : "autoexport",
+					"id" : "obj-15",
+					"maxclass" : "attrui",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 745.0, 232.0, 150.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 714.0, 134.0, 150.0, 20.0 ],
+					"text" : "Export folder"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 694.0, 64.0, 150.0, 20.0 ],
+					"text" : "File Export Name"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"attr" : "exportfolder",
+					"id" : "obj-9",
+					"maxclass" : "attrui",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 718.0, 162.0, 497.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"attr" : "exportname",
+					"id" : "obj-4",
+					"maxclass" : "attrui",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 694.0, 95.0, 167.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"basictuning" : 440,
 					"data" : 					{
 						"clips" : [ 							{
@@ -68,7 +160,7 @@
 					"originaltempo" : 120.0,
 					"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 231.0, 109.0, 150.0, 30.0 ],
+					"patching_rect" : [ 122.0, 365.0, 150.0, 30.0 ],
 					"pitchcorrection" : 0,
 					"quality" : "basic",
 					"timestretch" : [ 0 ]
@@ -83,7 +175,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 472.0, 194.0, 150.0, 22.0 ]
+					"patching_rect" : [ 408.5, 180.0, 182.0, 22.0 ]
 				}
 
 			}
@@ -95,7 +187,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 299.0, 194.0, 150.0, 22.0 ]
+					"patching_rect" : [ 380.5, 132.0, 182.0, 22.0 ]
 				}
 
 			}
@@ -105,7 +197,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 247.0, 353.0, 45.0, 45.0 ]
+					"patching_rect" : [ 21.0, 552.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -332,7 +424,13 @@
  ]
 					}
 ,
-					"patching_rect" : [ 247.0, 285.0, 149.0, 22.0 ],
+					"patching_rect" : [ 21.0, 492.0, 149.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"autoexport" : 0,
+						"exportfolder" : "C:/Users/User/Documents/GitHub/Gen-/1.GenToJuce/Source/GenDSP/",
+						"exportname" : "GENAM"
+					}
+,
 					"text" : "gen~ @title AmplitudeMod"
 				}
 
@@ -357,6 +455,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 131.5, 477.0, 30.5, 477.0 ],
 					"source" : [ "obj-12", 0 ]
 				}
 
@@ -364,6 +463,30 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 754.5, 477.0, 30.5, 477.0 ],
+					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 703.5, 477.0, 30.5, 477.0 ],
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 390.0, 477.0, 30.5, 477.0 ],
 					"source" : [ "obj-6", 0 ]
 				}
 
@@ -371,7 +494,16 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 418.0, 477.0, 30.5, 477.0 ],
 					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 727.5, 477.0, 30.5, 477.0 ],
+					"source" : [ "obj-9", 0 ]
 				}
 
 			}
