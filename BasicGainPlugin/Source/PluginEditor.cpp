@@ -13,9 +13,25 @@
 BasicGainPluginAudioProcessorEditor::BasicGainPluginAudioProcessorEditor (BasicGainPluginAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
-    setSize (400, 300);
+	// Making a Slider (Look at the PluginEditor.h)
+	
+	addAndMakeVisible(Gain); // Makes it on the screen
+
+	// What type of slider and does it have a text box.
+	
+	Gain.setSliderStyle(juce::Slider::SliderStyle::Rotary);  // Rotary slider
+	Gain.setTextBoxStyle(juce::Slider::NoTextBox, false,0,0); // No textbox for the value
+
+	// Linking to the apvts for controlling the instrument
+	// The first value is the APVTs set up in the processor.
+	// Second is the name of the Gen Gain param
+	// Third is the name of the slider object
+	mVolAttachment = std::make_unique <juce::AudioProcessorValueTreeState::SliderAttachment>
+	(audioProcessor.apvts, "Gain", Gain);
+
+
+	// Plugin window size (X,Y)
+    setSize (400, 300);			
 }
 
 BasicGainPluginAudioProcessorEditor::~BasicGainPluginAudioProcessorEditor()
@@ -25,16 +41,13 @@ BasicGainPluginAudioProcessorEditor::~BasicGainPluginAudioProcessorEditor()
 //==============================================================================
 void BasicGainPluginAudioProcessorEditor::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
 
-    g.setColour (juce::Colours::white);
-    g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
+
 }
 
+// Setup size of all the objects
 void BasicGainPluginAudioProcessorEditor::resized()
 {
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
+	// Gain slider poistion on screen and size
+	Gain.setBounds(100, 100, 100, 100);
 }

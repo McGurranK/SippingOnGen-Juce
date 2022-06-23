@@ -4,6 +4,26 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="aehTkI" name="BasicGainPlugin">
     <GROUP id="{08463D82-04CB-8C79-AF1C-85B089A5D726}" name="Source">
+      <GROUP id="{10E2A3F6-2570-8F6D-AE53-A50FED1CB7A6}" name="gen_export">
+        <GROUP id="{6B026A0E-9531-CEFB-3BA4-9AA940051035}" name="gen_dsp">
+          <FILE id="THmNzQ" name="genlib.cpp" compile="1" resource="0" file="Source/gen_export/gen_dsp/genlib.cpp"/>
+          <FILE id="bCNEoK" name="genlib.h" compile="0" resource="0" file="Source/gen_export/gen_dsp/genlib.h"/>
+          <FILE id="rbgcQG" name="genlib_common.h" compile="0" resource="0" file="Source/gen_export/gen_dsp/genlib_common.h"/>
+          <FILE id="l2xvyy" name="genlib_common_win.h" compile="0" resource="0"
+                file="Source/gen_export/gen_dsp/genlib_common_win.h"/>
+          <FILE id="Oywtpb" name="genlib_exportfunctions.h" compile="0" resource="0"
+                file="Source/gen_export/gen_dsp/genlib_exportfunctions.h"/>
+          <FILE id="P7ySlo" name="genlib_ops.h" compile="0" resource="0" file="Source/gen_export/gen_dsp/genlib_ops.h"/>
+          <FILE id="AxEuVp" name="genlib_platform.h" compile="0" resource="0"
+                file="Source/gen_export/gen_dsp/genlib_platform.h"/>
+          <FILE id="OsVtbq" name="json.c" compile="1" resource="0" file="Source/gen_export/gen_dsp/json.c"/>
+          <FILE id="R2hTAB" name="json.h" compile="0" resource="0" file="Source/gen_export/gen_dsp/json.h"/>
+          <FILE id="pZcNG2" name="json_builder.c" compile="1" resource="0" file="Source/gen_export/gen_dsp/json_builder.c"/>
+          <FILE id="G94oTY" name="json_builder.h" compile="0" resource="0" file="Source/gen_export/gen_dsp/json_builder.h"/>
+        </GROUP>
+        <FILE id="KD6awI" name="gen_export.cpp" compile="1" resource="0" file="Source/gen_export/gen_export.cpp"/>
+        <FILE id="Ruoki7" name="gen_export.h" compile="0" resource="0" file="Source/gen_export/gen_export.h"/>
+      </GROUP>
       <FILE id="ZtHeHj" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="rUoSSd" name="PluginProcessor.h" compile="0" resource="0"

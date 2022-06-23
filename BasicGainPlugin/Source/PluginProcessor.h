@@ -9,11 +9,14 @@
 #pragma once
 
 #include <JuceHeader.h>
+// Location for gen_export header file including
+#include "gen_export/gen_export.h"
 
 //==============================================================================
 /**
 */
-class BasicGainPluginAudioProcessor  : public juce::AudioProcessor
+class BasicGainPluginAudioProcessor  : public juce::AudioProcessor,
+	juce::AudioProcessorValueTreeState::Listener
 {
 public:
     //==============================================================================
@@ -53,7 +56,23 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+	using APVTS = juce::AudioProcessorValueTreeState;
+	APVTS::ParameterLayout createParameterLayout();
+	APVTS apvts{ *this, nullptr, "Parameters", createParameterLayout() };
+
+	void parameterChanged(const juce::String& parameterID, float newValue) override;
+
+protected:
+
+	void assureBufferSize(long bufferSize);
+
+
 private:
     //==============================================================================
+	CommonState *m_C74PluginState;
+	long m_CurrentBufferSize;
+	t_sample** m_InputBuffers;
+	t_sample** m_OutputBuffers;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicGainPluginAudioProcessor)
 };

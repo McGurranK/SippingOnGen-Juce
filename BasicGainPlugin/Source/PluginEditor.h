@@ -25,9 +25,20 @@ public:
     void resized() override;
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
-    BasicGainPluginAudioProcessor& audioProcessor;
 
+	/* Look here */
+	// Lets make a slider juce utilises Object Oriented Programming, meaning we have to make
+	// an object and then modify it as a starting point
+
+	// Make the Slider
+	juce::Slider Gain;
+
+	// Used to manage link between Volume slider and the DSP.
+	std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>mVolAttachment;
+
+	/* Have a look at how it's implemented in the PluginEditor.CPP*/
+
+
+    BasicGainPluginAudioProcessor& audioProcessor;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicGainPluginAudioProcessorEditor)
 };

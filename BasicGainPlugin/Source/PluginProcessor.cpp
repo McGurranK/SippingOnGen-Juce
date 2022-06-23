@@ -12,20 +12,45 @@
 //==============================================================================
 BasicGainPluginAudioProcessor::BasicGainPluginAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
-     : AudioProcessor (BusesProperties()
-                     #if ! JucePlugin_IsMidiEffect
-                      #if ! JucePlugin_IsSynth
-                       .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
-                      #endif
-                       .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
-                     #endif
-                       )
+	:m_CurrentBufferSize(0), AudioProcessor(BusesProperties()
+#if ! JucePlugin_IsMidiEffect
+#if ! JucePlugin_IsSynth
+		.withInput("Input", juce::AudioChannelSet::stereo(), true)
+#endif
+		.withOutput("Output", juce::AudioChannelSet::stereo(), true)
+#endif
+	)
+
 #endif
 {
+
+		// use a default samplerate and vector size here, reset it later
+	m_C74PluginState = (CommonState*)gen_export::create(44100, 64);
+	gen_export::reset(m_C74PluginState);
+
+	m_InputBuffers = new t_sample *[gen_export::num_inputs()];
+	m_OutputBuffers = new t_sample *[gen_export::num_outputs()];
+
+	for (int i = 0; i < gen_export::num_inputs(); i++) {
+		m_InputBuffers[i] = NULL;
+	}
+	for (int i = 0; i < gen_export::num_outputs(); i++) {
+		m_OutputBuffers[i] = NULL;
+	}
+	for (int i = 0; i < gen_export::num_params(); ++i)
+	{
+		auto name = juce::String(gen_export::getparametername(m_C74PluginState, i));
+		apvts.addParameterListener(name, this);
+	}
+	
 }
+
 
 BasicGainPluginAudioProcessor::~BasicGainPluginAudioProcessor()
 {
+	delete m_InputBuffers;
+	delete m_OutputBuffers;
+	gen_export::destroy(m_C74PluginState);
 }
 
 //==============================================================================
@@ -79,22 +104,28 @@ int BasicGainPluginAudioProcessor::getCurrentProgram()
 
 void BasicGainPluginAudioProcessor::setCurrentProgram (int index)
 {
+	index;
 }
 
 const juce::String BasicGainPluginAudioProcessor::getProgramName (int index)
 {
+	index;
     return {};
 }
 
 void BasicGainPluginAudioProcessor::changeProgramName (int index, const juce::String& newName)
 {
+	index;
+	newName;
 }
 
 //==============================================================================
 void BasicGainPluginAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+	m_C74PluginState->sr = sampleRate;
+	m_C74PluginState->vs = samplesPerBlock;
+
+	assureBufferSize(samplesPerBlock);
 }
 
 void BasicGainPluginAudioProcessor::releaseResources()
@@ -131,31 +162,96 @@ bool BasicGainPluginAudioProcessor::isBusesLayoutSupported (const BusesLayout& l
 
 void BasicGainPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
-    juce::ScopedNoDenormals noDenormals;
-    auto totalNumInputChannels  = getTotalNumInputChannels();
-    auto totalNumOutputChannels = getTotalNumOutputChannels();
+	// Unreferenced Pamater
+	midiMessages;
 
-    // In case we have more outputs than inputs, this code clears any output
-    // channels that didn't contain input data, (because these aren't
-    // guaranteed to be empty - they may contain garbage).
-    // This is here to avoid people getting screaming feedback
-    // when they first compile a plugin, but obviously you don't need to keep
-    // this code if your algorithm always overwrites all the output channels.
-    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-        buffer.clear (i, 0, buffer.getNumSamples());
+	for (int i = 0; i < gen_export::num_inputs(); i++)
+	{
+		if (i < getTotalNumInputChannels())
+		{
+			for (int j = 0; j < m_CurrentBufferSize; j++)
+				m_InputBuffers[i][j] = buffer.getReadPointer(i)[j];
+		}
+		else
+		{
+			memset(m_InputBuffers[i], 0, m_CurrentBufferSize * sizeof(double));
+		}
+	}
 
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
-    // Make sure to reset the state if your inner loop is processing
-    // the samples and the outer loop is handling the channels.
-    // Alternatively, you can process the samples with the channels
-    // interleaved by keeping the same state.
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
-    {
-        auto* channelData = buffer.getWritePointer (channel);
+	gen_export::perform(m_C74PluginState,
+		m_InputBuffers,
+		gen_export::num_inputs(),
+		m_OutputBuffers,
+		gen_export::num_outputs(),
+		buffer.getNumSamples());
 
-        // ..do something to the data...
-    }
+	for (int i = 0; i < getTotalNumOutputChannels(); i++)
+	{
+		if (i < gen_export::num_outputs())
+		{
+			for (int j = 0; j < buffer.getNumSamples(); j++)
+				buffer.getWritePointer(i)[j] = m_OutputBuffers[i][j];
+		}
+		else
+		{
+			buffer.clear(i, 0, buffer.getNumSamples());
+		}
+	}
+}
+// Added
+void BasicGainPluginAudioProcessor::assureBufferSize(long bufferSize)
+{
+	if (bufferSize > m_CurrentBufferSize)
+	{
+		for (int i = 0; i < gen_export::num_inputs(); i++)
+		{
+			if (m_InputBuffers[i])
+				delete m_InputBuffers[i];
+
+			m_InputBuffers[i] = new t_sample[bufferSize];
+		}
+
+		for (int i = 0; i < gen_export::num_outputs(); i++)
+		{
+			if (m_OutputBuffers[i])
+				delete m_OutputBuffers[i];
+
+			m_OutputBuffers[i] = new t_sample[bufferSize];
+		}
+
+		m_CurrentBufferSize = bufferSize;
+	}
+}
+void BasicGainPluginAudioProcessor::parameterChanged(const juce::String& parameterID, float newValue)
+{
+	auto index = apvts.getParameter(parameterID)->getParameterIndex();
+	gen_export::setparameter(m_C74PluginState, index, newValue, nullptr);
+}
+
+juce::AudioProcessorValueTreeState::ParameterLayout BasicGainPluginAudioProcessor::createParameterLayout()
+{
+	m_C74PluginState = (CommonState*)gen_export::create(44100, 64);
+	gen_export::reset(m_C74PluginState);
+
+	juce::AudioProcessorValueTreeState::ParameterLayout layout;
+
+	for (int i = 0; i < gen_export::num_params(); ++i)
+	{
+		auto name = juce::String(gen_export::getparametername(m_C74PluginState,i));
+		auto min = gen_export::getparametermin(m_C74PluginState, i);
+		auto max = gen_export::getparametermax(m_C74PluginState, i);
+		auto defaultValue = m_C74PluginState->params[i].defaultvalue;
+
+		layout.add(std::make_unique<juce::AudioParameterFloat>(name, name,
+			juce::NormalisableRange<float>(min, max, 0.01f, 1.f),
+			defaultValue,
+			juce::String(),
+			juce::AudioProcessorParameter::genericParameter,
+			nullptr,
+			nullptr));
+	}
+
+	return layout;
 }
 
 //==============================================================================
@@ -166,26 +262,37 @@ bool BasicGainPluginAudioProcessor::hasEditor() const
 
 juce::AudioProcessorEditor* BasicGainPluginAudioProcessor::createEditor()
 {
-    return new BasicGainPluginAudioProcessorEditor (*this);
+	return new BasicGainPluginAudioProcessorEditor(*this);
+
+	// Generic Audio Processor Editor
+	//return new juce::GenericAudioProcessorEditor(*this);
 }
 
 //==============================================================================
-void BasicGainPluginAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
+// XLM Save State
+
+void BasicGainPluginAudioProcessor::getStateInformation(juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
+
+	destData.setSize(gen_export::getstatesize(m_C74PluginState), false);
+	gen_export::getstate(m_C74PluginState, (char*)destData.getData());
+
 }
 
-void BasicGainPluginAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void BasicGainPluginAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
+
+	gen_export::setstate(m_C74PluginState, (const char *)data);
+	sizeInBytes;
+
 }
 
 //==============================================================================
 // This creates new instances of the plugin..
+
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new BasicGainPluginAudioProcessor();
+
+	return new BasicGainPluginAudioProcessor();
 }
+

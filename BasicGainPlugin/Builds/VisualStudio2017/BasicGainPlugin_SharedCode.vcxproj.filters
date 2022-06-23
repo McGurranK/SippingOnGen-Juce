@@ -2,6 +2,12 @@
 
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="BasicGainPlugin\Source\gen_export\gen_dsp">
+      <UniqueIdentifier>{31238084-0443-7E7E-C438-836578446F09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BasicGainPlugin\Source\gen_export">
+      <UniqueIdentifier>{AD8C994A-EFCE-CABE-A2EB-184F99F04AA0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="BasicGainPlugin\Source">
       <UniqueIdentifier>{3F453A0C-B032-3571-98C2-34E27E1ED8BC}</UniqueIdentifier>
     </Filter>
@@ -445,6 +451,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\gen_export\gen_dsp\genlib.cpp">
+      <Filter>BasicGainPlugin\Source\gen_export\gen_dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\gen_export\gen_dsp\json.c">
+      <Filter>BasicGainPlugin\Source\gen_export\gen_dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\gen_export\gen_dsp\json_builder.c">
+      <Filter>BasicGainPlugin\Source\gen_export\gen_dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\gen_export\gen_export.cpp">
+      <Filter>BasicGainPlugin\Source\gen_export</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
       <Filter>BasicGainPlugin\Source</Filter>
     </ClCompile>
@@ -2562,6 +2580,33 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\genlib.h">
+      <Filter>BasicGainPlugin\Source\gen_export\gen_dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\genlib_common.h">
+      <Filter>BasicGainPlugin\Source\gen_export\gen_dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\genlib_common_win.h">
+      <Filter>BasicGainPlugin\Source\gen_export\gen_dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\genlib_exportfunctions.h">
+      <Filter>BasicGainPlugin\Source\gen_export\gen_dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\genlib_ops.h">
+      <Filter>BasicGainPlugin\Source\gen_export\gen_dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\genlib_platform.h">
+      <Filter>BasicGainPlugin\Source\gen_export\gen_dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\json.h">
+      <Filter>BasicGainPlugin\Source\gen_export\gen_dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\json_builder.h">
+      <Filter>BasicGainPlugin\Source\gen_export\gen_dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gen_export\gen_export.h">
+      <Filter>BasicGainPlugin\Source\gen_export</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>BasicGainPlugin\Source</Filter>
     </ClInclude>

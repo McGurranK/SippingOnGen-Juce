@@ -137,6 +137,10 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\gen_export\gen_dsp\genlib.cpp"/>
+    <ClCompile Include="..\..\Source\gen_export\gen_dsp\json.c"/>
+    <ClCompile Include="..\..\Source\gen_export\gen_dsp\json_builder.c"/>
+    <ClCompile Include="..\..\Source\gen_export\gen_export.cpp"/>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
     <ClCompile Include="..\..\Source\PluginEditor.cpp"/>
     <ClCompile Include="..\..\..\..\..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
@@ -2102,6 +2106,15 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\genlib.h"/>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\genlib_common.h"/>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\genlib_common_win.h"/>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\genlib_exportfunctions.h"/>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\genlib_ops.h"/>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\genlib_platform.h"/>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\json.h"/>
+    <ClInclude Include="..\..\Source\gen_export\gen_dsp\json_builder.h"/>
+    <ClInclude Include="..\..\Source\gen_export\gen_export.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
     <ClInclude Include="..\..\..\..\..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
